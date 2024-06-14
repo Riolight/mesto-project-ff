@@ -1,5 +1,6 @@
-export {openModal, closeModal, editFormSubmit, formElement}; 
-import {modalWindowEdit} from '../index.js'
+export {openModal, closeModal, editFormSubmit, formElement, formElementAdd, cardFormSubmit}; 
+import {modalWindowEdit, modalWindowCard} from '../index.js'
+import {createCard, deleteCard, cardsConteiner} from './card.js'
 
 // @todo: DOM узлы формы
 const profilTitle = document.querySelector('.profile__title');
@@ -7,6 +8,10 @@ const profilDescription = document.querySelector('.profile__description');
 const formElement = document.forms.editProfile;
 const nameInput = formElement.elements.name;
 const jobInput = formElement.elements.description;
+
+const formElementAdd = document.forms.newPlace;
+const placeNameInput = formElementAdd.elements.placeName;
+const linkInput = formElementAdd.elements.link;
 
 function openModal(element) {
     element.classList.add('popup_is-opened');
@@ -31,12 +36,10 @@ function openModal(element) {
   function cardFormSubmit(evt) {
     evt.preventDefault();
 
-    const name = form.elements.name;
-    const link = form.elements.link;
-    const cardContainer = createCard(name.value, link.value);
+    const cardContainer = createCard(placeNameInput.value, deleteCard);
 
-
-
-cardsContainer.appendChild(cardContainer);
+    cardsConteiner.appendChild(cardContainer);
+    formElementAdd.reset();
+    closeModal(modalWindowCard);
   };
 

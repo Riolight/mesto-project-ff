@@ -1,16 +1,6 @@
 import './pages/index.css'; // добавьте импорт главного файла стилей 
-import {initialCards} from './components/cards.js'; 
-import {createCard, deleteCard} from './components/card.js'; 
-import {openModal, closeModal, editFormSubmit, formElement} from './components/modal.js'; 
-export {cardTemplate, modalWindowEdit, modalWindowCard, cardsConteiner};
-
-
-// @todo: Темплейт карточки
-const cardTemplate = document.querySelector("#card-template").content;
-
-// @todo: DOM узлы
-const content = document.querySelector(".content");
-const cardsConteiner = content.querySelector(".places__list");
+import {openModal, closeModal, editFormSubmit, formElement, formElementAdd, cardFormSubmit} from './components/modal.js'; 
+export {modalWindowEdit, modalWindowCard};
 
 // @todo: DOM узлы попап
 const modalWindowEdit = document.querySelector('.popup_type_edit');
@@ -24,12 +14,6 @@ const openModalImgBtn = document.querySelector('.card__image');
 const closeModalBtns = document.querySelectorAll('.popup__close');
 const saveModalBtns = document.querySelectorAll('.popup__button');
 
-// @todo: Вывести карточки на страницу
-initialCards.forEach(element => {
- const cardElement = createCard(element, deleteCard);
-  cardsConteiner.append(cardElement);
-});
-
 // @todo: Modal
 openModalEditBtn.addEventListener('click', () => {
   openModal(modalWindowEdit);
@@ -37,12 +21,7 @@ openModalEditBtn.addEventListener('click', () => {
 
 openModalAddBtn.addEventListener('click', () => {
   openModal(modalWindowCard);
-  console.log(openModal(modalWindowCard))
-});
-
-openModalImgBtn.addEventListener('click', () => {
-  console.log(openModal(modalWindowImg))
-});
+}); 
 
 closeModalBtns[0].addEventListener('click', () => {
   closeModal(modalWindowEdit);
@@ -72,3 +51,4 @@ modalWindowCard.addEventListener('click', (evt) => {
 });
 
 formElement.addEventListener('submit', editFormSubmit);
+formElementAdd.addEventListener('submit', cardFormSubmit);
