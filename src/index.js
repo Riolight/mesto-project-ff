@@ -22,12 +22,12 @@ const cardsConteiner = content.querySelector('.places__list');
 const profilTitle = document.querySelector('.profile__title');
 const profilDescription = document.querySelector('.profile__description');
 
-const formElement = document.forms.editProfile;
-const nameInput = formElement.elements.name;
-const jobInput = formElement.elements.description;
-
 // @todo: DOM узлы попап
 const modalWindowEdit = document.querySelector('.popup_type_edit');
+const formElement = modalWindowEdit.querySelector('.popup__form');
+const nameInput = formElement.querySelector('.popup__input_type_name');
+const jobInput = formElement.querySelector('.popup__input_type_description');
+
 const modalWindowCard = document.querySelector('.popup_type_new-card');
 const formElementAdd = modalWindowCard.querySelector('.popup__form');
 const modalWindowImg = document.querySelector('.popup_type_image');
