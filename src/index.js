@@ -1,20 +1,26 @@
 import "./pages/index.css"; // импорт главного файла стилей
+import { initialCards } from "./components/cards.js";
+import { createCard, deleteCard, addlLike} from "./components/card.js";
 import {
   openModal,
-  closeModal,
-  editFormProfile,
-  cardFormAdd,
+  closeModal
 } from "./components/modal.js";
 export {
   modalWindowEdit,
   formElementAdd,
   modalWindowCard,
   modalWindowImg,
-  profilTitle,
-  profilDescription,
-  nameInput,
-  jobInput,
+  openModalImg,
+  cardTemplate,
+  closeModalBtns
 };
+
+// @todo: Темплейт карточки
+const cardTemplate = document.querySelector("#card-template").content;
+
+// @todo: DOM узлы
+const content = document.querySelector(".content");
+const cardsConteiner = content.querySelector(".places__list");
 
 // @todo: DOM узлы формы
 const profilTitle = document.querySelector(".profile__title");
@@ -35,6 +41,12 @@ const openModalAddBtn = document.querySelector(".profile__add-button");
 
 const closeModalBtns = document.querySelectorAll(".popup__close");
 
+// @todo: Вывести карточки на страницу
+initialCards.forEach((element) => {
+  const cardElement = createCard(element, deleteCard);
+  cardsConteiner.append(cardElement);
+});
+
 // @todo: Modal
 openModalEditBtn.addEventListener("click", () => {
   nameInput.value = profilTitle.textContent;
@@ -46,44 +58,50 @@ openModalAddBtn.addEventListener("click", () => {
   openModal(modalWindowCard);
 });
 
-closeModalBtns[0].addEventListener("click", () => {
+for (let closeModalBtn of closeModalBtns) {
+  closeModalBtn.addEventListener("click", () => {
+    closeModal(modalWindowEdit);
+    closeModal(modalWindowCard);
+    closeModal(modalWindowImg);
+  });  
+};
+
+function editFormProfile(evt) {
+  evt.preventDefault();
+  profilTitle.textContent = nameInput.value;
+  profilDescription.textContent = jobInput.value;
   closeModal(modalWindowEdit);
-});
+};
 
-closeModalBtns[1].addEventListener("click", () => {
+function addNewCard(evt) {
+  evt.preventDefault();
+
+  const name = formElementAdd.querySelector(".popup__input_type_card-name");
+  const link = formElementAdd.querySelector(".popup__input_type_url");
+  const cardElement = createCard(
+    {
+      name: name.value,
+      link: link.value,
+    },
+    deleteCard,
+    addlLike
+  );
+
+  cardsConteiner.prepend(cardElement);
+  formElementAdd.reset();
   closeModal(modalWindowCard);
-});
+};
 
-closeModalBtns[2].addEventListener("click", () => {
-  closeModal(modalWindowImg);
-});
+function openModalImg(inputName, inputLink) {
+  openModal(modalWindowImg);
 
-document.addEventListener("keydown", (evt) => {
-  if (evt.code === "Escape") {
-    closeModal(modalWindowEdit);
-    closeModal(modalWindowCard);
-    closeModal(modalWindowImg);
-  }
-});
+  const popapImg = document.querySelector(".popup__image");
+  const bpopapCaption = document.querySelector(".popup__caption");
 
-modalWindowEdit.addEventListener("click", (evt) => {
-  if (evt.target === modalWindowEdit) {
-    closeModal(modalWindowEdit);
-  }
-});
-
-modalWindowCard.addEventListener("click", (evt) => {
-  if (evt.target === modalWindowCard) {
-    closeModal(modalWindowCard);
-  }
-});
-
-modalWindowImg.addEventListener("click", (evt) => {
-  if (evt.target === modalWindowImg) {
-    closeModal(modalWindowImg);
-  }
-});
+  popapImg.src = inputLink;
+  popapImg.alt = inputName;
+  bpopapCaption.textContent = inputName;
+};
 
 formElement.addEventListener("submit", editFormProfile);
-
-formElementAdd.addEventListener("submit", cardFormAdd);
+formElementAdd.addEventListener("submit", addNewCard);
