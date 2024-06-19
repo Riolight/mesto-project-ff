@@ -1,8 +1,8 @@
-import { openModalImg, cardTemplate } from '../index.js';
-export { createCard, deleteCard, addlLike };
+import { cardTemplate } from '../index.js';
+export { createCard, deleteCard, addLike };
 
 // @todo: Функция создания карточки
-function createCard(input, deleteCard) {
+function createCard(dataCard, deleteCard, addLike, openModalImg) {
   const cardElement = cardTemplate
     .querySelector('.places__item')
     .cloneNode(true);
@@ -10,14 +10,14 @@ function createCard(input, deleteCard) {
   const deleteButton = cardElement.querySelector('.card__delete-button');
   const likeBtn = cardElement.querySelector('.card__like-button');
 
-  cardElement.querySelector('.card__title').textContent = input.name;
-  cardImage.src = input.link;
-  cardImage.alt = input.name;
+  cardElement.querySelector('.card__title').textContent = dataCard.name;
+  cardImage.src = dataCard.link;
+  cardImage.alt = dataCard.name;
 
   deleteButton.addEventListener('click', deleteCard);
-  likeBtn.addEventListener('click', addlLike);
+  likeBtn.addEventListener('click', addLike);
   cardImage.addEventListener('click', () => {
-    openModalImg(input.name, input.link);
+    openModalImg(dataCard.name, dataCard.link);
   });
   return cardElement;
 }
@@ -29,6 +29,6 @@ function deleteCard(evt) {
 }
 
 // @todo: Функция лайка
-function addlLike(evt) {
+function addLike(evt) {
   evt.target.classList.toggle('card__like-button_is-active');
 }

@@ -1,33 +1,20 @@
-export { openModal, closeModal };
-import { modalWindowEdit, modalWindowCard, modalWindowImg } from '../index.js';
+export { openPopap, closePopap };
 
-function openModal(element) {
-  element.classList.add('popup_is-opened');
-  element.classList.add('popup_is-animated');
+function openPopap(popap) {
+  popap.classList.add('popup_is-opened');
   document.body.style.overflow = 'hidden';
+  document.addEventListener('keydown', closeEscPopap);
 }
 
-function closeModal(element) {
-  element.classList.remove('popup_is-opened');
+function closePopap(popap) {
+  popap.classList.remove('popup_is-opened');
   document.body.style.overflow = '';
+  document.removeEventListener('keydown', closeEscPopap);
 }
 
-document.addEventListener('keydown', (evt) => {
+function closeEscPopap(evt) {
   if (evt.code === 'Escape') {
-    closeModal(modalWindowEdit);
-    closeModal(modalWindowCard);
-    closeModal(modalWindowImg);
+    const modal = document.querySelector('.popup_is-opened');
+    closePopap(modal);
   }
-});
-
-document.addEventListener('click', (evt) => {
-  if (
-    evt.target === modalWindowEdit ||
-    evt.target === modalWindowCard ||
-    evt.target === modalWindowImg
-  ) {
-    closeModal(modalWindowEdit);
-    closeModal(modalWindowCard);
-    closeModal(modalWindowImg);
-  }
-});
+}
