@@ -1,7 +1,8 @@
 import './pages/index.css'; // импорт главного файла стилей
 import { initialCards } from './components/cards.js';
 import { createCard, deleteCard, addLike } from './components/card.js';
-import { openPopap, closePopap } from './components/modal.js';
+import { openPopap, closePopap} from './components/modal.js';
+import { enableValidation } from './components/validation.js'
 export { cardTemplate };
 
 // @todo: Темплейт карточки
@@ -60,7 +61,7 @@ popaps.forEach((popap) => {
 modalWindowEdit.addEventListener('click', (evt) => {
   if (evt.target === modalWindowEdit) {
     closePopap(modalWindowEdit);
-  }
+  } 
 });
 
 modalWindowCard.addEventListener('click', (evt) => {
@@ -108,3 +109,12 @@ function openModalImg(inputName, inputLink) {
 
 formElementEdit.addEventListener('submit', editFormProfile);
 formElementAdd.addEventListener('submit', addNewCard);
+
+  enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+  }); 
