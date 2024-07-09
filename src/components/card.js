@@ -14,6 +14,9 @@ function createCard(dataCard, deleteCard, addLike, openModalImg) {
   cardImage.src = dataCard.link;
   cardImage.alt = dataCard.name;
 
+  const counterLikes = cardElement.querySelector('.card__counter-like');
+  counterLikes.textContent = dataCard.likes.length;
+
   deleteButton.addEventListener('click', deleteCard);
   likeBtn.addEventListener('click', addLike);
   cardImage.addEventListener('click', () => {
