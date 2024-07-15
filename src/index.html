@@ -14,17 +14,13 @@
       <header class="header page__section">
         <img
           src="<%=require('./images/logo.svg')%>"
-          alt="Логотип проекта масто"
+          alt="Логотип проекта мeсто"
           class="logo header__logo"
         />
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/avatar.jpg')%>"
-            alt="Аватар"
-            class="profile__image"
-          />
+          <div class="profile__image" alt="Аватар" style="background-image: url('<%=require(`./images/avatar.jpg`)%>');"></div>
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button"></button>
@@ -119,6 +115,26 @@
           <img src="" alt="" class="popup__image" />
           <p class="popup__caption"></p>
         </div>
+      </div>
+    </div>
+    <div class="popup popup_type_avatar">
+      <div class="popup__content">
+        <button type="button" class="popup__close"  aria-label="Закрыть окно обновления аватара"></button>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form class="popup__form" id="popup-form-avatar" name="edit-avatar" novalidate>
+            <input type="url" name="link" class="popup__input popup__input_type_url" placeholder="Ссылка на картинку" id="link-input" required/>
+            <span class="form__input-error link-input-error" ></span>
+          <button type="submit" class="button popup__button">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_alert popup_is-animated">
+      <div class="popup__content popup_content_alert">
+        <button type="button" class="popup__close"></button>
+        <h3 class="popup__title">Вы уверены?</h3>
+          <button type="submit" class="button popup__button popup__button-alert">
+            Да
+          </button>
       </div>
     </div>
     <template id="card-template">

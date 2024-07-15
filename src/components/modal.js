@@ -1,20 +1,20 @@
-export { openPopap, closePopap };
+export { openPopup, closePopup };
 
-function openPopap(popap) {
-  popap.classList.add('popup_is-opened');
+function openPopup(popup) {
+  popup.classList.add('popup_is-opened');
   document.body.style.overflow = 'hidden';
-  document.addEventListener('keydown', closeEscPopap);
+  document.addEventListener('keydown', closeEscPopup);
 }
 
-function closePopap(popap) {
-  popap.classList.remove('popup_is-opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_is-opened');
   document.body.style.overflow = '';
-  document.removeEventListener('keydown', closeEscPopap);
+  document.removeEventListener('keydown', closeEscPopup);
 }
 
-function closeEscPopap(evt) {
+function closeEscPopup(evt) {
   if (evt.code === 'Escape') {
     const modal = document.querySelector('.popup_is-opened');
-    closePopap(modal);
+    closePopup(modal);
   }
 }
