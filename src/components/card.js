@@ -1,5 +1,5 @@
 import { cardTemplate } from '../index.js';
-import { addLike, deleteLike } from "./api.js";
+import { addLike, deleteLike } from './api.js';
 export { createCard, likeCard };
 
 // @todo: Функция создания карточки
@@ -10,7 +10,9 @@ const createCard = ({
   likeCard,
   openPopupImage,
 }) => {
-  const cardElement = cardTemplate.querySelector('.places__item').cloneNode(true);
+  const cardElement = cardTemplate
+    .querySelector('.places__item')
+    .cloneNode(true);
   const cardImage = cardElement.querySelector('.card__image');
   const deleteButton = cardElement.querySelector('.card__delete-button');
   const likeButton = cardElement.querySelector('.card__like-button');
@@ -25,7 +27,7 @@ const createCard = ({
 
   const isLiked = dataCard.likes.some((like) => like._id === userId);
   if (isLiked) {
-    likeButton.classList.add("card__like-button_is-active");
+    likeButton.classList.add('card__like-button_is-active');
   }
 
   if (dataCard.owner._id === userId) {
@@ -48,24 +50,23 @@ const createCard = ({
 
 // @todo: Функция лайка
 const likeCard = (evt, cardId, counterLikes) => {
-  if (evt.target.classList.contains("card__like-button_is-active")) {
+  if (evt.target.classList.contains('card__like-button_is-active')) {
     deleteLike(cardId)
       .then((updatedCard) => {
-        evt.target.classList.remove("card__like-button_is-active");
+        evt.target.classList.remove('card__like-button_is-active');
         counterLikes.textContent = updatedCard.likes.length;
       })
       .catch((err) => {
-        console.log(err);
+        console.log('ошибка удаления лайка:', err);
       });
   } else {
     addLike(cardId)
       .then((updatedCard) => {
-        evt.target.classList.add("card__like-button_is-active");
+        evt.target.classList.add('card__like-button_is-active');
         counterLikes.textContent = updatedCard.likes.length;
       })
       .catch((err) => {
-        console.log(err);
+        console.log('ошибка удобавления лайка:', err);
       });
   }
 };
-

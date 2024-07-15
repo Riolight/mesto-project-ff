@@ -1,5 +1,6 @@
 export { enableValidation, clearValidation };
 
+// @todo: Показать ошибки
 const showInputError = (
   formElement,
   inputElement,
@@ -16,6 +17,7 @@ const showInputError = (
   errorElement.classList.add(configValidation.errorClass);
 };
 
+// @todo: Спрятать ошибки
 const hideInputError = (formElement, inputElement, configValidation) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(configValidation.inputErrorClass);
@@ -23,6 +25,7 @@ const hideInputError = (formElement, inputElement, configValidation) => {
   errorElement.textContent = '';
 };
 
+// @todo: Валидация формы
 const checkInputValidity = (formElement, inputElement, configValidation) => {
   if (inputElement.validity.patternMismatch) {
     inputElement.setCustomValidity(inputElement.dataset.errorMessage);
@@ -86,9 +89,14 @@ const enableValidation = (configValidation) => {
   });
 };
 
+// @todo: Очистка валидации
 const clearValidation = (formElement, configValidation) => {
-  const inputList = Array.from(formElement.querySelectorAll(configValidation.inputSelector));
-  const buttonElement = formElement.querySelector(configValidation.submitButtonSelector);
+  const inputList = Array.from(
+    formElement.querySelectorAll(configValidation.inputSelector)
+  );
+  const buttonElement = formElement.querySelector(
+    configValidation.submitButtonSelector
+  );
 
   inputList.textContent = '';
 
@@ -109,4 +117,3 @@ const clearValidation = (formElement, configValidation) => {
     inputElement.classList.remove(configValidation.inputErrorClass);
   });
 };
-

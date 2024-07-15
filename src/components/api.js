@@ -6,7 +6,7 @@ export {
   postAddNewCard,
   handlerDeleteCard,
   addLike,
-  deleteLike
+  deleteLike,
 };
 
 const config = {
@@ -39,13 +39,13 @@ const getInitialCards = () => {
 };
 
 // PATCH-запрос редактирования карточки
-const updateUserInfo = (data) => {
+const updateUserInfo = (userInfo) => {
   return fetch(`${config.baseUrl}/users/me`, {
     method: 'PATCH',
     headers: config.headers,
     body: JSON.stringify({
-      name: data.name,
-      about: data.about
+      name: userInfo.name,
+      about: userInfo.about,
     }),
   }).then(handleRes);
 };
@@ -56,10 +56,10 @@ const updateUserAvatar = (link) => {
     method: 'PATCH',
     headers: config.headers,
     body: JSON.stringify({
-      avatar: link
+      avatar: link.link,
     }),
   }).then(handleRes);
-}
+};
 
 // POST-запрос добавления карточки
 const postAddNewCard = (dataCard) => {
@@ -74,7 +74,7 @@ const postAddNewCard = (dataCard) => {
 const handlerDeleteCard = (cardId) => {
   return fetch(`${config.baseUrl}/cards/${cardId}`, {
     method: 'DELETE',
-    headers: config.headers
+    headers: config.headers,
   }).then(handleRes);
 };
 
@@ -82,7 +82,7 @@ const handlerDeleteCard = (cardId) => {
 const addLike = (cardId) => {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: 'PUT',
-    headers: config.headers
+    headers: config.headers,
   }).then(handleRes);
 };
 
