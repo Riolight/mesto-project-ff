@@ -26,5 +26,4 @@
 3. [Сайт опубликован на сервере](https://riolight.github.io/mesto-project-ff).
 
 ## Pull request
-[https://github.com/Riolight/mesto-project-ff]
-(https://riolight.github.io/mesto-project-ff)
+[GITHUB](https://github.com/Riolight/mesto-project-ff "Cсылка на аккаунт github")
