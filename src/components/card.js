@@ -1,13 +1,12 @@
 import { cardTemplate } from '../index.js';
-import { addLike, deleteLike } from './api.js';
-export { createCard, likeCard };
+export { createCard };
 
 // @todo: Функция создания карточки
 const createCard = ({
   userId,
   dataCard,
   confirmDeleteCard,
-  likeCard,
+  confirmLikeCard,
   openPopupImage,
 }) => {
   const cardElement = cardTemplate
@@ -39,7 +38,7 @@ const createCard = ({
   }
 
   likeButton.addEventListener('click', (evt) => {
-    likeCard(evt, dataCard._id, counterLikes);
+    confirmLikeCard(evt, dataCard._id, counterLikes);
   });
 
   cardImage.addEventListener('click', () => {
@@ -48,25 +47,3 @@ const createCard = ({
   return cardElement;
 };
 
-// @todo: Функция лайка
-const likeCard = (evt, cardId, counterLikes) => {
-  if (evt.target.classList.contains('card__like-button_is-active')) {
-    deleteLike(cardId)
-      .then((updatedCard) => {
-        evt.target.classList.remove('card__like-button_is-active');
-        counterLikes.textContent = updatedCard.likes.length;
-      })
-      .catch((err) => {
-        console.log('ошибка удаления лайка:', err);
-      });
-  } else {
-    addLike(cardId)
-      .then((updatedCard) => {
-        evt.target.classList.add('card__like-button_is-active');
-        counterLikes.textContent = updatedCard.likes.length;
-      })
-      .catch((err) => {
-        console.log('ошибка удобавления лайка:', err);
-      });
-  }
-};

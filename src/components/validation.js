@@ -105,7 +105,7 @@ const clearValidation = (formElement, configValidation) => {
     buttonElement,
     configValidation.inactiveButtonClass
   );
-
+  
   inputList.forEach((inputElement) => {
     hideInputError(
       formElement,

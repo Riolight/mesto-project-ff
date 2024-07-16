@@ -2,6 +2,8 @@
   font-size: 18px;
   line-height: 22px;
   grid-area: description;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin: 0;
 }
 

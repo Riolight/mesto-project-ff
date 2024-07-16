@@ -4,9 +4,9 @@ export {
   updateUserInfo,
   updateUserAvatar,
   postAddNewCard,
-  handlerDeleteCard,
-  addLike,
-  deleteLike,
+  handleDeleteCard,
+  handleCardLike,
+  deleteLikeCard,
 };
 
 const config = {
@@ -71,7 +71,7 @@ const postAddNewCard = (dataCard) => {
 };
 
 // DELETE-запрос удаления карточки
-const handlerDeleteCard = (cardId) => {
+const handleDeleteCard = (cardId) => {
   return fetch(`${config.baseUrl}/cards/${cardId}`, {
     method: 'DELETE',
     headers: config.headers,
@@ -79,7 +79,7 @@ const handlerDeleteCard = (cardId) => {
 };
 
 // PUT-запрос добавления лайка
-const addLike = (cardId) => {
+const handleCardLike = (cardId) => {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: 'PUT',
     headers: config.headers,
@@ -87,7 +87,7 @@ const addLike = (cardId) => {
 };
 
 // DELETE-запрос удаления лайка
-const deleteLike = (cardId) => {
+const deleteLikeCard = (cardId) => {
   return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: 'DELETE',
     headers: config.headers,
