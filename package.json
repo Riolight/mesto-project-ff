@@ -1,7 +1,7 @@
 {
   "name": "mesto-project-ff",
   "version": "1.0.0",
-  "description": "https://github.com/Riolight/mesto-project-ff",
+  "description": "https://github.com/roman-bakurov/mesto-project-ff",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
