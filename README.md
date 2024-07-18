@@ -50,9 +50,3 @@
 [GitHub](https://github.com/roman-bakurov/mesto-project-ff "Cсылка на аккаунт github")
 
 ---
-
-### :fire: My Stats :
-[![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=Riolight&theme=dark&background=000000)](https://git.io/streak-stats)
-
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Riolight)](https://github.com/anuraghazra/github-readme-stats)
----
