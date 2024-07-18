@@ -1,7 +1,7 @@
 # Проектная работа Mesto
 
 <div id="header" align="center">
-  ![Mesto](https://i.yapx.ru/XvfzG.png)
+  <img width="1578" alt="проектная работа Mesto" src="https://github.com/user-attachments/assets/a702238e-e819-4b4f-b028-b723348afa1c">
 </div>
 
 ### :hammer_and_wrench: Languages and Tools :
