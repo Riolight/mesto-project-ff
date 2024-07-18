@@ -44,9 +44,9 @@
 
 1. Разработана валидация всех форм;
 2. Подключен интерфейс к API;
-3. [Сайт опубликован на сервере](https://roman-bakurov.github.io/mesto-project-ff).
+3. [Сайт опубликован на сервере](https://romanbakurov.github.io/mesto-project-ff).
 
 ## Pull request
-[GitHub](https://github.com/roman-bakurov/mesto-project-ff "Cсылка на аккаунт github")
+[GitHub](https://github.com/romanbakurov/mesto-project-ff "Cсылка на аккаунт github")
 
 ---
