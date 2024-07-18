@@ -1,7 +1,7 @@
 # Проектная работа Mesto
 
 <div id="header" align="center">
-  <a href="https://yapx.ru/image/XvfzG" title="Изображение загружено на фотохостинг yapx.ru"><img src="https://i.yapx.ru/XvfzGs.png" alt="Хостинг картинок yapx.ru" width="500"></a>
+  ![Mesto](https://i.yapx.ru/XvfzG.png)
 </div>
 
 ### :hammer_and_wrench: Languages and Tools :
